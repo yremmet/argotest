@@ -1,8 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+metadata:
+  name: inline-example  # This name is required - make sure it's not missing
+  namespace: test       # Using your "test" namespace
 spec:
   destination:
     namespace: default
+    server: https://kubernetes.default.svc
   project: default
   source:
     directory:
