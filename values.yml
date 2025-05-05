@@ -1,0 +1,63 @@
+---
+---
+nameOverride: test-cluster
+backups:
+  enabled: false # TODO
+  retentionPolicy: 30d
+  provider: s3
+  endpointURL:  https://s3.<region>.amazonaws.com"
+  s3:
+    accessKey: ""
+    secretKey: ""
+    bucket: ""
+
+
+cluster:
+  resources:
+    requests:
+      memory: 1Gi
+      cpu: "1"
+    limits:
+      memory: 1Gi
+      cpu: "1"
+  initdb:
+    postInitSQL:
+      - CREATE DATABASE angus
+    postInitApplicationSQL:
+      - "select 1;"
+
+  instances: 3
+  monitoring:
+    enabled: false
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.4
+  roles:
+      - name: NEW
+        ensure: present
+        comment: Dante Alighieri
+        login: true
+        superuser: false
+        inherit: true
+        inRoles:
+        - app
+      - name: NEW2
+        ensure: present
+        comment: Dante Alighieri
+        login: true
+        superuser: false
+        inherit: true
+        inRoles:
+        - app
+  services:
+    disabledDefaultServices: ["ro", "r"]
+    additional:
+      - selectorType: rw
+        serviceTemplate:
+          metadata:
+            name: test-cluster-rw
+          spec:
+            type: LoadBalancer
+            loadBalancerIP: 1.2.3.4
+          updateStrategy: recreate
+
+  storage:
+    size: 10G
