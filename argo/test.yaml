@@ -5,7 +5,7 @@ metadata:
   namespace: test       # Using your "test" namespace
 spec:
   destination:
-    namespace: default
+    namespace: test
     server: https://kubernetes.default.svc
   project: default
   source:
