@@ -9,6 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
+    repoURL: https://github.com/argoproj/argocd-example-apps.git  # Required field
+    targetRevision: HEAD  
     directory:
       include: |
         apiVersion: apps/v1
