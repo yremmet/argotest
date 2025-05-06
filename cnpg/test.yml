@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: meine-zusatz-config
-  namespace: test # Stelle sicher, dass dies der Ziel-Namespace deiner App ist
-data:
-  mein-schlüssel: mein-wert
-  ein-anderer-schlüssel: noch-ein-wert
