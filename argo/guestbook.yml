@@ -12,7 +12,7 @@ spec:
     - repoURL: https://github.com/argoproj/argocd-example-apps.git
       targetRevision: HEAD
       path: guestbook
-    - repoURL: 'https://github.com/dein-repo/dein-projekt.git' # Ersetze durch deine Repo-URL
+    - repoURL: 'https://github.com/yremmet/argotest.git' # Ersetze durch deine Repo-URL
       targetRevision: HEAD # Oder einen spezifischen Branch/Tag
       path: cnpg
   syncPolicy:
